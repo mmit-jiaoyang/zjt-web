@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/f/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="/lui/dist/layui/css/layui.css"  media="all">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="/lui/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="/f/css/index.css"  media="all">
+    <style>
+         .card-title-zyzl{background: url(/f/img/zyzs.png) no-repeat 10px 7px !important;}
+         .cart-title-sp{margin-left: 18px;}
+         .cart-title-zybtj{background: url(/f/img/Rectangle%204.png) no-repeat 10px 7px !important;}
+         .cart-title-xstj{background: url(/f/img/xstj.png) no-repeat 10px 7px !important;} 
+         .cart-title-cnxh{background: url(/f/img/cnxh.png) no-repeat 10px 7px !important;}
+         .cart-title-cbsdh{background: url(/f/img/cbsdh.png) no-repeat 10px 7px !important;}
+         .book h4,.book p{padding:0px 4px;}
+         .book p.star{padding:0px 4px;}
+         a.cover2 img{
+           box-shadow: 0 0 7px 0px #969696;
+            -webkit-box-shadow: 0 0 7px 0px #969696;
+            -moz-box-shadow: 0 0 7px 0px #969696;
+            -o-box-shadow: 0 0 7px 0px #969696;
+         }
+    </style>
+</head>
+<body>
+<div class="header bg-f">
+    <div class="header-main">
+	  <div class="layui-row">
+	         <div class="layui-col-xs8">
+	           <a href="javascript:;" class="logo">
+	            <img src="/f/img/icon.png">
+	          </a>
+	          <ul lay-filter="" class="layui-nav menu-header">
+	            <li class="layui-nav-item layui-this"><a href="/f/index">首页</a></li>
+	             <li class="layui-nav-item"><a href="/f/ebook/index">电子书</a></li>
+	            <li class="layui-nav-item"><a href="/f/DDA/index">EBS</a></li>
+	            <li class="layui-nav-item"><a href="/f/respkg/index">资源包</a></li>
+	          </ul>
+	         </div>
+	          <div class="layui-col-xs4">
+		          <ul class="secondNav">
+
+		            <li ><span >192.168.33.7</span>,&nbsp;<span>会笑的菠萝</span></li>
+		            <li ><a href="/f/login">登录</a></li>
+		            <li class="mm-nav-item-small"><a href="javascript:void(1);">注册</a></li>
+		            <li class="mm-nav-item-small"><a  href="/a">管理后台</a></li>
+		          </ul>
+	          </div>
+	     </div>  
+         <script>
+             $(document).ready(function(){
+            	 $("#gotoPc").click(function(){
+            		 window.open("/f/pc/getDownLoadList?rows=30&page=0","_blank");
+            	 });
+             });
+         </script>
+
+    </div>
+</div>
+
+<div class=" header-buttom-bg"  >
+    <div class="layui-row">
+        <div class="layui-col-xs6 layui-col-xs-offset3 search-btn search-box">
+         <div class="search-wrap">
+            <input type="text" style="" id="svalue"/>
+            <select name="searchkey" lay-verify="" style="" id="searchKey">
+                <option value="all">全部</option>
+                <option value="name">书名</option>
+                <option value="publishCompany">出版社</option>
+                <option value="author">作者</option>
+                <option value="eisbn">ISBN</option>
+                <option value="pisbn">PISBN</option>
+                <option value="pdfContent">全文</option>
+            </select>
+            <div class="select-go-bg">
+             <button class="select-go"  style="" id="searchgo">&nbsp;</button>
+            </div>
+          </div>
+          <div class="search-btn-box">
+              <button   style="">高级检索</button>
+          </div>
+        </div>
+
+    </div>
+</div>
+<div class=" layui-main main" style="">
+
+        <div class=" main-content">
+            <div class="layui-row">
+                <div class="layui-col-xs3">
+                    <div class="layui-row">
+                        <div class="layui-card " style=""> 
+                            <a class="at card-title-zyzl"><span class="cart-title cart-title-sp">资源总量</span></a>
+                            <div class="layui-card-body cart-title" style="padding-left: 60px;" >
+                                119
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row" style="margin-top: 10px;">
+                        <div class="layui-tab layui-tab-card left-class-tab">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this tab-class-title" style="width:50%;padding: 0px 0px;">中图分类</li>
+                                <li class="tab-class-title" style="width:50%;padding: 0px 0px;">教育部分类</li>
+                            </ul>
+                            <div class="layui-tab-content left-class-content" style="overflow-y: auto;">
+                               <div class="layui-tab-item layui-show">
+                               <ul id="cnode" class="ztree"></ul>
+                               </div>
+                                <div class="layui-tab-item">
+                                <ul id="cnode2" class="ztree"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- right-->
+                <div class="layui-col-xs9 ">
+                    <div class="layui-carousel" id="test1" lay-filter="test1" style="margin-left: 15px;width: 100%;">
+                        <div carousel-item="">
+                            <div><img src="/f/img/banner.png"  height="100%" width="100%"></div>
+                            <div><img src="/f/img/banner.png" height="100%" width="100%"></div>
+                        </div>
+                    </div>
+                    
+                     <div class="layui-row" style="margin-left: 15px;margin-top: 15px;">
+                        <div class="layui-col-xs6">
+                            <div class="layui-card " style="margin-right: 5px">
+                                <div class="layui-card-header" style="height: 48px;line-height: 48px;"> 
+                                    <a  class="at cart-title-zybtj"><span class="cart-title cart-title-sp">资源包推荐</span></a>
+                                    <span class="layui-badge-dot layui-bg-blue" style="margin-left: 30px;"></span>
+                                    <span class="layui-badge-dot layui-bg-black"></span>
+                                    <span class="layui-badge-dot layui-bg-gray"></span>
+                                    <a style="background: url(/f/img/shangyiye.png) no-repeat center;"></a>
+                                    <span></span>
+                                </div>
+
+                                <div class="layui-card-body" style="padding:10px 20px;">
+                                    <ul class="ds" >
+                                       <li  class="respkg-li" style="height:94px;">
+                                           <div class="m-book-info f-cb">
+                                         
+                                               <h4>
+                                                 <a href="/f/respkg/detail.html" target="_blank" title="">
+                                                   <img src="/f/img/pailiey.png" style="width: 20px; height: 20px;">
+                                                   <span class="cart-title2" >资源包名称</span>
+                                                 </a>
+                                               </h4>
+                                               <div  class="respkg-detail">资源包介绍资源包介绍资源包介绍</div>
+                  
+                                               <!--
+                                               <a class="read" href="" target="_blank" data-model="zbtj#xs" data-opration="book_reader" title="立即阅读">立即阅读<i></i></a>
+                                               -->
+                                           </div>
+                                       </li>
+                                  
+
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs6">
+                            <div class="layui-card " style="margin-left: 5px">
+                                <div class="layui-card-header" style="height: 48px;line-height: 48px;">
+                                    <a  class="at cart-title-xstj"><span class="cart-title cart-title-sp">新书推荐</span></a>
+                                    <span class="layui-badge-dot layui-bg-blue" style="margin-left: 30px;"></span>
+                                    <span class="layui-badge-dot layui-bg-black"></span>
+                                    <span class="layui-badge-dot layui-bg-gray"></span>
+                                    <a style="background: url(/f/img/shangyiye.png) no-repeat center;"></a>
+                                    <span></span>
+                                </div>
+                                <div class="layui-card-body m-book-ft" style="padding-left: 0px;">
+                                    
+                                    
+                                    <ul class="book" >
+                                        <li>
+                                            <a class="cover2" href="/f/ebook/detail" target="_blank" data-model="jptu" data-opration="jpts_img" >
+                                                   <img  src="/f/img/cover.png" alt="">
+                                            </a>
+                                            <h4><a href="javascript:void(1);" class="fav-book-name" target="_blank" data-model="jptu" data-opration="jpts_txt" title="" >书名</a></h4>
+                                            <p >鲁迅</p>
+                                            <p class="star">
+	                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i> 
+	                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+	                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+	                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+	                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                            </p>
+                                        </li>
+                                 
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row" style="margin-left: 15px;margin-top: 15px;">
+                        <div class="layui-card " style="">
+                            <div class="layui-card-header" style="height: 48px;line-height: 48px;"> 
+                                <a  class="at cart-title-cnxh"><span class="cart-title cart-title-sp">猜你喜欢</span></a>
+                                <span class="layui-badge-dot layui-bg-blue" style="margin-left: 30px;"></span>
+                                <span class="layui-badge-dot layui-bg-black"></span>
+                                <span class="layui-badge-dot layui-bg-gray"></span>
+                                <a style="background: url(/f/img/shangyiye.png) no-repeat center;"></a>
+                                <span></span>
+                            </div>
+                            <div class="layui-card-body m-book-ft" style="padding-left: 0px;">
+                                <ul class="book" >
+                                    <li >
+                                        <a class="cover2" href="/f/ebook/detail.html" target="_blank" data-model="jptu" data-opration="jpts_img" >
+                                            <img src="/f/img/cover.png"  alt="">
+
+                                        </a>
+                                        <h4><a href="javascript:void(1);" class="fav-book-name" target="_blank" data-model="jptu" data-opration="jpts_txt" title="" >书名</a></h4>
+                                       <p>作者</p>
+                                        <p class="star"><i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i> 
+                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row" style="margin-left: 15px;margin-top: 15px;">
+                        <div class="layui-card " style="">
+                            <div class="layui-card-header" style="height: 48px;line-height: 48px;"> 
+                                <a  class="at cart-title-cbsdh"><span class="cart-title cart-title-sp">出版社导航</span></a>
+                                <span class="layui-badge-dot layui-bg-blue" style="margin-left: 30px;"></span>
+                                <span class="layui-badge-dot layui-bg-black"></span>
+                                <span class="layui-badge-dot layui-bg-gray"></span>
+                                <a style="background: url(/f/img/shangyiye.png) no-repeat center;"></a>
+                                <span></span>
+                            </div>
+                            <div class="layui-card-body " style="padding-left: 0px;">
+                                <div class="layui-row">
+                                    <a class="layui-col-xs3">
+                                       <img src="/f/img/chubanshedaohang.png"/>
+                                    </a>
+                                    <a class="layui-col-xs3">
+                                        <img src="/f/img/chubanshedaohang.png"/>
+                                    </a>
+                                    <a class="layui-col-xs3">
+                                        <img src="/f/img/chubanshedaohang.png"/>
+                                    </a>
+                                    <a class="layui-col-xs3">
+                                        <img src="/f/img/chubanshedaohang.png"/>
+                                    </a>
+
+                                </div>
+                                <div class="layui-row">
+                                    <a class="layui-col-xs3">
+                                        <img src="/f/img/chubanshedaohang.png"/>
+                                    </a>
+                                    <a class="layui-col-xs3">
+                                        <img src="/f/img/chubanshedaohang.png"/>
+                                    </a>
+                                    <a class="layui-col-xs3">
+                                        <img src="/f/img/chubanshedaohang.png"/>
+                                    </a>
+                                    <a class="layui-col-xs3">
+                                        <img src="/f/img/chubanshedaohang.png"/>
+                                    </a>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    
+    
+    <div class="layui-row">    
+    </div>
+
+
+</div>
+
+<div class="layui-container header-buttom"  >
+    <div style="width: 100%;background-color: #113361;clear: both;height:100px;line-height:100px;color: #FFFFFF;">
+        <p style="text-align: center">©2018-<span id="j-year">2019</span>&nbsp;&nbsp;京公网安备10000000110号</p>
+    </div>
+</div>
+<script src="/lui/dist/layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['carousel', 'form'], function(){
+        var carousel = layui.carousel
+                ,form = layui.form;
+
+        //常规轮播  ,width:'698px' height:'280px'
+        carousel.render({
+            elem: '#test1'
+            ,height:'280px'
+            ,arrow: 'always'
+        });
+
+
+
+        var $ = layui.$, active = {
+            set: function(othis){
+                var THIS = 'layui-bg-normal'
+                        ,key = othis.data('key')
+                        ,options = {};
+
+                othis.css('background-color', '#5FB878').siblings().removeAttr('style');
+                options[key] = othis.data('value');
+                ins3.reload(options);
+            }
+        };
+
+    });
+
+    layui.use('element', function(){
+        var element = layui.element;
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+    
+
+</script>
+<script type="text/javascript" src="/f/zTree/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="/f/search.js"></script>
+<script>
+    var setting = {
+		view: {
+			showIcon: showIconForTree,
+			showLine : false,
+    		nameIsHTML: true
+		},
+		callback: {
+			onClick: onClickNode
+		},
+
+		
+		async:{
+    		enable: true,
+    		url:"/f/booksClass/sub?grade=1&isAll=false",
+    		autoParam:["id","parentId"],
+    		dataFilter: filter
+    	}
+	};
+    
+    function filter(treeId, parentNode, childNodes) {
+    	if (null != parentNode && parentNode.count == 0) {
+			return ;
+		}
+		if (!childNodes) return null;
+		for (var i=0, l=childNodes.length; i<l; i++) {
+			var childName = childNodes[i].name;
+			if(childName.length >= 11){
+				childName = childName.substr(0,9)+"...";
+			}
+			childNodes[i].name = childNodes[i].classMark+"."+childName.replace(/\.n/g, '.')+"("+childNodes[i].count+")";
+		}
+		return childNodes;
+	}
+    
+
+	function showIconForTree(treeId, treeNode) {
+		return !treeNode.isParent;
+	}
+	function onClickNode(event, treeId, treeNode, clickFlag){
+
+	     if(treeNode.type == 3){
+	    	 window.open("/search/bookClass/query?classEdu="+treeNode.classMark,'_blank');
+	    	 return;
+	     }
+		  window.open("/search/bookClass/query?classZtf="+treeNode.classMark,'_blank');
+	}
+
+	$(document).ready(function(){
+
+	    var ztfSetting = setting;
+	    ztfSetting.async.url = "/f/booksClass/sub?grade=1&isAll=false&type=4"
+		$.fn.zTree.init($("#cnode"), ztfSetting);
+	    
+	    var eduSetting = setting;
+	    eduSetting.async.url = "/f/booksClass/sub?grade=1&isAll=false&type=3";
+		$.fn.zTree.init($("#cnode2"), eduSetting);
+		
+	});
+	
+</script>
+
+</body>
+</html>

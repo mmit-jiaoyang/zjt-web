@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>资源包详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lui/dist/layui/css/layui.css"  media="all">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="/lui/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="/f/css/index.css"  media="all">
+    <style>
+        .search-btn2{
+            height:30px;
+            padding-left: 12px;
+            padding-top: 3px;
+        }
+        .search-box2{
+            background: url(/f/img/search2-p1.png)  no-repeat left top;background-size: 100% 100%;
+        }
+        .search-box2 input{width:183px;height:23px;float: left; border: none;background-color: transparent;}
+        .search-box2 select{float: right;margin-right: 3px;border: none;height:23px;width:76px;border: none;background-color: transparent;}
+        .select-go-bg2{float: left;background: url(/f/img/search2-p2.png)  no-repeat left top   !important;}
+        .select-go2{background: url(/f/img/sgo.png)  no-repeat left top; background-size: 80% 80%;   height: 25px;
+            width: 25px;  border: none;}
+        .layui-breadcrumb span[lay-separator] {
+            margin: 0 5px;
+            color: #999;
+        }
+        .second-search{padding:16px 10px 0px 10px;height: 50px;}
+        .ds li{height: 153px;}
+        .tc li{text-align: center}
+        .scul li{text-align: center;margin-top: 16px;}
+    </style>
+</head>
+<body>
+<div class="header bg-f">
+    <div class="header-main">
+	  <div class="layui-row">
+	         <div class="layui-col-xs8">
+	           <a href="javascript:;" class="logo">
+	            <img src="/f/img/icon.png">
+	          </a>
+	          <ul lay-filter="" class="layui-nav menu-header">
+	            <li class="layui-nav-item layui-this"><a href="/f/index">首页</a></li>
+	             <li class="layui-nav-item"><a href="/f/ebook/index">电子书</a></li>
+	            <li class="layui-nav-item layui-this"><a href="/f/DDA/index">EBS</a></li>
+	            <li class="layui-nav-item"><a href="/f/respkg/index">资源包</a></li>
+	          </ul>
+	         </div>
+	          <div class="layui-col-xs4">
+                  <ul class="secondNav">
+                      <li ><span >192.168.33.7</span>,&nbsp;<span>会笑的菠萝</span></li>
+                      <li ><a href="/f/login">登录</a></li>
+                      <li class="mm-nav-item-small"><a href="javascript:void(1);">注册</a></li>
+                      <li class="mm-nav-item-small"><a  href="/a">管理后台</a></li>
+                  </ul>
+	          </div>
+	     </div>  
+         <script>
+             $(document).ready(function(){
+            	 $("#gotoPc").click(function(){
+            		 window.open("/f/pc/getDownLoadList?rows=30&page=0","_blank");
+            	 });
+             });
+         </script>
+
+    </div>
+
+</div>
+<div class=" header-buttom-bg"  >
+    <div class="layui-row">
+        <div class="layui-col-xs6 layui-col-xs-offset3 search-btn search-box">
+         <div class="search-wrap">
+            <input type="text" style="" id="svalue"/>
+            <select name="searchkey" lay-verify="" style="" id="searchKey">
+                <option value="all">全部</option>
+                <option value="name">书名</option>
+                <option value="publishCompany">出版社</option>
+                <option value="author">作者</option>
+                <option value="eisbn">ISBN</option>
+                <option value="pisbn">PISBN</option>
+                <option value="pdfContent">全文</option>
+            </select>
+            <div class="select-go-bg">
+             <button class="select-go"  style="" id="searchgo">&nbsp;</button>
+            </div>
+          </div>
+          <div class="search-btn-box">
+              <button   style="">高级检索</button>
+          </div>
+        </div>
+
+    </div>
+</div>
+
+<div class=" layui-main main" >
+    
+    <div class="layui-row">
+        <div class=" main-content" >
+            <div class="layui-card second-search"  style="">
+                <div class="layui-col-xs9">
+                    当前位置：
+                    <span class="layui-breadcrumb" lay-separator=">">
+                        <a href="javascript:void(1);">EBS</a>
+                        <a href="javascript:void(1);"><cite>EBS详情</cite></a>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="layui-row" style="margin-top: 10px;">
+        <div class="layui-col-xs11 main-content">
+
+                    <div class="layui-row" style="margin-top: 10px;">
+                        <div class="layui-card " style="">
+
+                     
+                                            
+                            <div class="layui-card-body " style="padding: 10px 15px;">
+                                <div class="layui-row">
+                                    <div class="m-book-info f-cb">
+                                        <a class="cover" href="/f/respkg/detail.html"  target="_blank" data-model="zbtj#xs" data-opration="source">
+                                            <img src="/f/img/cover.png"  alt="">
+                                        </a>
+                                        <h4><a href="/f/respkg/detail.html"  target="_blank" title="">资源包</a></h4>
+                                       <p>数量:<span>&nbsp;</span><span >110</span></p>
+                                        <p >用户使用说明用户使用说明</p>
+                                        <p><a class="layui-btn  layui-btn-sm layui-btn-radius" id="addCartBtn" data-url-sb="/a/lm/cart/addOne">立即购买</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="layui-row">
+                                    <hr class="layui-bg-gray">
+                                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                                        <ul class="layui-tab-title">
+                                            <li class="layui-this">书单</li>
+                                             <li class="">使用说明</li>
+                                        </ul>
+                                        
+                                        <div class="layui-tab-content" style="padding: 10px 0px;">
+                                            <!--
+                                            <table class="layui-hide" id="hasres" lay-skin="nob"></table>
+                                            -->
+                                           <div class="layui-tab-item layui-show">
+                                            <table class="layui-table" id="hasres" lay-skin="nob">
+                                                <colgroup>
+                                                    <col width="50">
+                                                    <col width="150">
+                                                    <col width="120">
+                                                    <col width="120">
+                                                    <col width="80">
+                                                    <col width="120">
+                                                    <col width="120">
+                                                    <col width="50">
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th>序号</th>
+                                                    <th>书名</th>
+                                                    <th>作者</th>
+                                                    <th>出版社</th>
+                                                    <th>价格</th>
+                                                    <th>出版时间</th>
+                                                    <th>ISBN</th>
+                                                    <th>中图法分类</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr >
+                                                    <td >1</td>
+                                                    <td><a  href="/f/ebook/detail">小学生必修</a></td>
+                                                    <td >鲁迅</td>
+                                                    <td >北师大出版</td>
+                                                    <td >110.52</td>
+                                                    <td >2016</td>
+                                                    <td >99988879987</td>
+                                                    <td >环境科学</td>
+                                                </tr>
+
+                                                </tbody>
+                                            </table>
+                                           </div>
+                                           
+                                           <div class="layui-tab-item">
+                                               用户使用协议。。。。。。。。
+                                           </div>
+                                           
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                <!-- right-->
+        </div>
+    </div>
+
+
+
+</div>
+<div class="layui-container header-buttom"  >
+    <div style="width: 100%;background-color: #113361;clear: both;height:100px;line-height:100px;color: #FFFFFF;">
+        <p style="text-align: center">©2018-<span id="j-year">2019</span>&nbsp;&nbsp;京公网安备10000000110号</p>
+    </div>
+</div>
+<script src="/lui/dist/layui/layui.js" charset="utf-8"></script>
+
+<script>
+
+
+    layui.use('element', function(){
+        var element = layui.element;
+        element.on('nav(demo)', function(elem){
+            layer.msg(elem.text());
+        });
+    });
+
+</script>
+<script type="text/javascript" src="/f/search.js"></script>
+<script>
+$(document).ready(function(){
+	$("#addCartBtn").click(function(){
+		 var url = $(this).attr("data-url-sb");
+		 $.ajax({
+	            url:url,
+	            contentType:"application/json;charset=UTF-8",
+	            type:"POST",
+	            dataType:"json",
+	            async: false,
+	            data:null,
+	            success:function(data){
+	                if(data.code){
+	                    alert("加入采选车成功！");
+	                }else{
+	                	alert("加入采选车失败！");
+	                }
+	            },
+	            error:function(jqXHR,textStatus,errorThrown){
+	       
+	                console.log(jqXHR);
+	                console.log(textStatus);
+	                console.log(errorThrown);
+	            }
+	        });
+	});
+	
+});
+
+</script>
+</body>
+</html>

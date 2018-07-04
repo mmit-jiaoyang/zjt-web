@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>检索</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" href="/f/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="/lui/dist/layui/css/layui.css"  media="all">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="/lui/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="/f/css/index.css"  media="all">
+    <style>
+        .search-btn2{
+            height:30px;
+            padding-left: 12px;
+            padding-top: 3px;
+        }
+        .search-box2{
+            background: url(/f/img/search2-p1.png)  no-repeat left top;background-size: 100% 100%;
+        }
+        .search-box2 input{width:183px;height:23px;float: left; border: none;background-color: transparent;}
+        .search-box2 select{float: right;margin-right: 3px;border: none;height:23px;width:76px;border: none;background-color: transparent;}
+        .select-go-bg2{float: left;background: url(/f/img/search2-p2.png)  no-repeat left top   !important;}
+        .select-go2{background: url(/f/img/sgo.png)  no-repeat left top; background-size: 80% 80%;   height: 25px;
+            width: 25px;  border: none;position:relative;left:10px;top:2px;}
+        .layui-breadcrumb span[lay-separator] {
+            margin: 0 5px;
+            color: #999;
+        }
+        .second-search{padding:16px 10px 0px 10px;height: 50px;}
+        .ds li{height: 183px;}
+        .tc li{text-align: center;font-size: 18px; color: #3F3F3F;margin: 4px 0px 10px 0px;}
+        .tc li{ font-size:16px;}
+         .wordnowrap{
+              overflow: hidden;
+          white-space: nowrap;
+         text-overflow: ellipsis;
+        }
+        .m-book-info .leftCover{height: 155px;}
+        .leftDetailDiv{float: left;width: 80%;}  
+        .rightBtnDiv{
+            float: left; position: relative;display: block;left: 7%;height: 100%;top: 70%;
+         }
+         .rightBtnIcon{width: 22px;height: 20px;display: block;}
+         .onlineReadbtn{background: url(/f/img/zaixianyuedu.png) no-repeat left top !important;}
+         .downbtn{margin-top: 5px;background: url(/f/img/xiazai.png) no-repeat left top !important;}  
+         .ds li{margin: 10px 0px;}  
+         
+        .shaixuan-tab{width:380px;height:150px;overflow:hidden;}
+        .shaixuan-li{margin-left: 8px;}
+        .shaixuan-li button{font-size: 13px;}
+        .shaixuan-tab li{float: left;;}
+   
+        .shaixuan-li a{
+          white-space: nowrap;
+          text-overflow: ellipsis;
+           text-align: left;
+            overflow: hidden;
+            width: 160px;
+           max-width: 160px; 
+          display:inline;
+        }
+      
+    </style>
+</head>
+<body>
+<div class="header bg-f">
+       <div class="header-main">
+	  <div class="layui-row">
+	         <div class="layui-col-xs8">
+	           <a href="javascript:;" class="logo">
+	            <img src="/f/img/icon.png">
+	          </a>
+	          <ul lay-filter="" class="layui-nav menu-header">
+	            <li class="layui-nav-item "><a href="/f/index">首页</a></li>
+	             <li class="layui-nav-item layui-this"><a href="/f/ebook/index">电子书</a></li>
+	            <li class="layui-nav-item"><a href="/f/DDA/index">EBS</a></li>
+	            <li class="layui-nav-item"><a href="/f/respkg/index">资源包</a></li>
+	          </ul>
+	         </div>
+	          <div class="layui-col-xs4">
+                  <ul class="secondNav">
+
+                      <li ><span >192.168.33.7</span>,&nbsp;<span>会笑的菠萝</span></li>
+                      <li ><a href="/f/login">登录</a></li>
+                      <li class="mm-nav-item-small"><a href="javascript:void(1);">注册</a></li>
+                      <li class="mm-nav-item-small"><a  href="/a">管理后台</a></li>
+                  </ul>
+	          </div>
+	     </div>  
+         <script>
+             $(document).ready(function(){
+            	 $("#gotoPc").click(function(){
+            		 window.open("/f/pc/getDownLoadList?rows=30&page=0","_blank");
+            	 });
+             });
+         </script>
+
+    </div>
+
+</div>
+<div class=" header-buttom-bg"  >
+    <div class="layui-row">
+        <div class="layui-col-xs6 layui-col-xs-offset3 search-btn search-box">
+         <div class="search-wrap">
+            <input type="text" style="" id="svalue"/>
+            <select name="searchkey" lay-verify="" style="" id="searchKey">
+                <option value="all">全部</option>
+                <option value="name">书名</option>
+                <option value="publishCompany">出版社</option>
+                <option value="author">作者</option>
+                <option value="eisbn">ISBN</option>
+                <option value="pisbn">PISBN</option>
+                <option value="pdfContent">全文</option>
+            </select>
+            <div class="select-go-bg">
+             <button class="select-go"  style="" id="searchgo">&nbsp;</button>
+            </div>
+          </div>
+          <div class="search-btn-box">
+              <button   style="">高级检索</button>
+          </div>
+        </div>
+
+    </div>
+</div>
+
+<div class=" layui-main main" >
+    <div class="layui-row">
+        <div class=" main-content" >
+            <div class="layui-card second-search"  style="">
+                <div class="layui-col-xs2">
+                    当前位置：
+                    <span class="layui-breadcrumb" lay-separator=">">
+                      <a href=""><cite>电子书</cite></a>
+                        <a href=""></a>
+                    </span>
+                </div>
+                <div class="layui-col-xs4  search-btn2 search-box2">
+                    <input type="text" style="" id="secendVal" />
+                    <select name="searchkey" lay-verify="" style="" id="secondSearchKey" >
+                            <option  value="all">全部</option>
+			                <option  value="name">书名</option>
+			                <option  value="publishCompany">出版社</option>
+			                <option  value="author">作者</option>
+			                <option  value="eisbn">ISBN</option>
+			                <option  value="pisbn">PISBN</option>
+			                  <option  value="pdfContent">全文</option>
+                    </select>
+                </div>
+                <div class="layui-col-xs1 search-btn2 select-go-bg2">
+                    <button class="select-go2"  style="" id="secondSearchgo">&nbsp;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row" style="margin-top: 10px;">
+        <div class="layui-col-xs11 main-content">
+            <div class="layui-row">
+                <div class="layui-col-xs3">
+                    <div class="layui-row" style="margin-top: 10px;">
+                         <div class="layui-row" style="margin-top: 10px;">
+	                        <div class="layui-tab layui-tab-card left-class-tab" style="height: 620px;">
+	                            <ul class="layui-tab-title">
+	                                <li class="layui-this" style="width:50%;padding: 0px 0px;">中图分类</li>
+	                                <li style="width:50%;padding: 0px 0px;">教育部分类</li>
+	                            </ul>
+	                            <div class="layui-tab-content left-class-content"  style="height: 540px;overflow-y: auto;">
+	                               <div class="layui-tab-item layui-show">
+	                               <ul id="cnode" class="ztree"></ul>
+	                               </div>
+	                                <div class="layui-tab-item">
+	                                <ul id="cnode2" class="ztree"></ul>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+                    </div>
+
+                    <div class="layui-row">
+                        <div class="layui-card " style="margin-top: 10px;">
+                            <button class="layui-btn layui-btn-primary layui-btn-fluid default-theme-btn def-btn-this">评星</button>
+                            <div class="layui-card-body " >
+                                <ul class="tc">
+                                    <li>
+                                        <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                        <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                        <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                        (<span>1041</span>)
+                                    </li>
+                                    <li>
+                                        <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                        <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                         <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                        (<span>1041</span>)
+                                    </li>
+                                    <li>
+                                        <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                         <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                          <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                        (<span>1041</span>)
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row">
+                        <div class="layui-card " style="margin-top: 10px;">
+                            <button class="layui-btn layui-btn-primary layui-btn-fluid default-theme-btn def-btn-this">CAT核心书目</button>
+                            <div class="layui-card-body " >
+                                <ul class="tc">
+                                    <li >
+                                        3-6级核心数码(<span>1041</span>)
+                                    </li>
+                                    <li >
+                                        3-6级核心数码(<span>1041</span>)
+                                    </li>
+                                    <li >
+                                        3-6级核心数码(<span>1041</span>)
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- right-->
+                <div class="layui-col-xs9">
+                    <!-- shuai xuan -->
+                    <div class="layui-row" style="margin-left: 15px;margin-top: 10px;">
+	                          <ul lay-filter="" class="layui-nav menu-header " style="margin-left: 0px;">
+	                                <li class="layui-nav-item">筛选</li>
+						            <li class="layui-nav-item  shaixuan-li" id="shuaixuan-all-li">
+						                <button class="layui-btn layui-btn-normal layui-btn-xs layui-btn-radius" id="shuaixuan-all">全部</button>
+						            </li>
+						            <!-- 
+						             -->
+						            <li class="layui-nav-item shaixuan-li" >
+						                <div  class="factedDiv">
+						                <button  class="layui-btn layui-btn-normal layui-btn-xs layui-btn-radius"  id="shuaixuan-pc">出版社</button>
+						                <input type="hidden" id="publisherValue">
+						                <div class="layui-nav-child shaixuan-tab" id="shuaixuan-pc-tab">
+						                 <p style="padding-left:250px;"><a href="javascript:void(1);" class="shuaixuan-more" tog-id="#shuaixuan-pc-tab">更多>>></a></p>
+						                  <ul>
+						                    <li >
+						                     <a href="javascript:void(1);" class="shuaixuan-pc"
+						                     style="display:inline;">welly
+						                     </a>(<span >110</span>)
+						                     </li>
+                                              <li >
+                                                  <a href="javascript:void(1);" class="shuaixuan-pc"
+                                                     style="display:inline;">welly
+                                                  </a>(<span >110</span>)
+                                              </li>
+						                   </ul>
+						                    
+						                </div>
+						                 
+						                </div>
+						            
+						                 
+						               <div  class="factedDiv">
+						                  <button class="layui-btn layui-btn-normal layui-btn-xs layui-btn-radius" id="shuaixuan-au">作者</button>
+						                <input type="hidden" id="authorValue">
+						                <div class="layui-nav-child shaixuan-tab" id="shuaixuan-au-tab">
+						                   <p style="padding-left:250px;"><a href="javascript:void(1);" class="shuaixuan-more" tog-id="#shuaixuan-au-tab">更多>>></a></p>
+						                   <ul>
+						                   <li  >
+						                    <a href="javascript:void(1);" class="shuaixuan-au"
+						                    style="display:inline;">LAO TOMASE</a>(<span>112</span>)
+						                    </li>
+						                    </ul>
+						                </div>
+						                </div>
+						                
+						               <div  class="factedDiv">
+						                 <button class="layui-btn layui-btn-normal layui-btn-xs layui-btn-radius" id="shuaixuan-py">出版年</button>
+						                <input type="hidden" id="publishYearValue">
+						                <div class="layui-nav-child shaixuan-tab" id="shuaixuan-py-tab">
+						                   <p style="padding-left:250px;"><a href="javascript:void(1);" class="shuaixuan-more" tog-id="#shuaixuan-py-tab">更多>>></a></p>
+						                  <ul>
+						                   <li>
+						                    <a href="javascript:void(1);" class="shuaixuan-py"
+						                    style="display:inline;padding:0px 0px 0 8px;">2017</a>(<span >113</span>)
+						                    </li>
+						                   </ul>
+						                </div>
+						               </div>
+						               
+						               <div  class="factedDiv">
+						                 <button class="layui-btn layui-btn-normal layui-btn-xs layui-btn-radius" id="shuaixuan-la">语种</button>
+						                <input type="hidden" id="langeValue">
+						                <ul class="layui-nav-child shaixuan-tab">
+						                    <li>
+						                     <a href="javascript:void(1);" class="shuaixuan-la">ENG</a></li>
+						                </ul>
+						                </div>
+						                
+						            </li>
+						           
+	                          </ul>
+                    </div>
+                    <div class="layui-row" style="margin-left: 15px;margin-top: 10px;">
+                  
+                        <div class="layui-card " style="">
+                            <!-- -->
+	
+                            <div class="layui-card-body " style="padding: 0px 0px;">
+                                <div class="layui-col-xs6">
+                                    <button class="layui-btn layui-btn-primary layui-btn-fluid default-theme-btn def-btn-this">全部资源</button>
+                                </div>
+                                <div class="layui-col-xs6">
+                                    <button class="layui-btn layui-btn-primary layui-btn-fluid default-theme-btn">已购资源</button>
+                                </div>
+	                           <div class="layui-row" style="height:60px;padding-top: 3px;padding-left: 6px;">
+		                           <div class="layui-col-xs2">
+		                                                                             排序方式:
+                                      <input id="sort" type="hidden" value=""/>
+                                      <input id="direc" type="hidden" value=""/>
+		                           </div>
+		                           <div class="layui-col-xs7">
+		                             <ul>             
+		                                <li style="float:left;"><a id="btn_sort_zh">综合排序</a><span><i class="layui-icon " id="sort_zh"></i></span></li>
+		                                <li style="float:left;padding-left: 5px;"><a id="btn_sort_pf">评分最高</a><span><i class="layui-icon " id="sort_pf"></i></span></li>
+		                                <li style="float:left;padding-left: 5px;"><a id="btn_sort_sm">书名</a><span><i class="layui-icon " id="sort_sm"></i></span></li>
+		                                <li style="float:left;padding-left: 5px;"><a id="btn_sort_zz">作者</a><span><i class="layui-icon " id="sort_zz"></i></span></li>
+		                                <li style="float:left;padding-left: 5px;"><a id="btn_sort_cbs">出版社</a><span><i class="layui-icon " id="sort_cbs"></i></span></li>
+		                                <li style="float:left;padding-left: 5px;"><a id="btn_sort_cbsj">出版时间</a><i class="layui-icon " id="sort_cbsj"></i></li>
+		                             </ul>
+		                           </div>
+		                           <div class="layui-col-xs3">共<span >0</span>个
+		                           </div>
+		                        </div>
+                                <div class="layui-row">
+                                    <hr class="layui-bg-gray">
+                                    <ul class="ds" style="padding: 0px 10px;">
+                                           <!-- 
+                                            <h4><a href="" target="_blank" title="宠你一世又何妨" th:text="${ebook.name}"></a></h4>
+                                             -->
+                          
+                                        
+                                        <li  style="height:183px;">
+                                          
+                                            <div class="m-book-info f-cb leftDetailDiv">
+                                                <a class="cover leftCover"  target="_blank" title="" data-model="zbtj#xs" data-opration="source">
+                                                    <img src="/f/img/conver.png"  alt="">
+                                                </a>
+                                                <h4><a  target="_blank" title="" >ebook name</a></h4>
+                           
+                                                <p>ebook author</p>
+                                                <p><span>welly</span>&nbsp;&nbsp;<span>2017</span></p>
+                                                <p><i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                                 </p>
+                                                <p class="disc eps">ebook summary</p>
+                                            </div>
+                                            <div class="rightBtnDiv">
+                                              <a class="rightBtnIcon onlineReadbtn" href="@{/f/cdf/read(bookId=${ebook.id},cdf=${ebook.storePath})}" target="_blank"></a>
+                                              <a class="rightBtnIcon downbtn" href="javascript:void(1);" target="_blank"></a>
+                                            </div>
+                                              <hr class="layui-bg-gray">
+                                        </li>
+                                       
+                                       
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<div class="layui-container header-buttom"  >
+    <div style="width: 100%;background-color: #113361;clear: both;height:100px;line-height:100px;color: #FFFFFF;">
+        <p style="text-align: center">©2018-<span id="j-year">2019</span>&nbsp;&nbsp;京公网安备10000000110号</p>
+    </div>
+</div>
+<script src="/lui/dist/layui/layui.js" charset="utf-8"></script>
+<script>
+
+    layui.use('element', function(){
+        var element = layui.element;
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+
+</script>
+<script>
+</script>
+<script type="text/javascript" src="/f/search.js"></script>
+<script type="text/javascript" src="/f/zTree/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="/f/search.js"></script>
+
+<script>
+
+    $("#shuaixuan-all").click(function(){
+    	var url = window.location.href;
+    	searchedFilterAll(url,false);
+    });
+    $(".shuaixuan-pc").click(function(){
+        $("#publisherValue").val($(this).attr("data-shuaixuan"));
+        console.log($("#publisherValue").val());
+        searchCall(3,false);
+    });
+    $(".shuaixuan-au").click(function(){
+        $("#authorValue").val($(this).attr("data-shuaixuan"));
+        console.log($("#authorValue").val());
+        searchCall(3,false);
+    });
+    $(".shuaixuan-py").click(function(){
+        $("#publishYearValue").val($(this).attr("data-shuaixuan"));
+        console.log($("#publishYearValue").val());
+        searchCall(3,false);
+    });
+    $(".shuaixuan-la").click(function(){
+        $("#langeValue").val($(this).attr("data-shuaixuan"));
+        console.log($("#langeValue").val());
+        searchCall(3,false);
+    });
+  //sort_zh  sort_pf  sort_zz  sort_cbs  sort_cbsj
+  function getDirc(obj){
+	 var clazeStr = obj.attr("class");
+	 var direc = ''; // asc
+	 if(clazeStr.search(/layui-icon-up/i) > -1){
+		
+		 obj.removeClass("layui-icon-up").addClass('layui-icon-down');
+		 direc = 'desc';
+	 }else{
+		 direc = 'asc'; 
+		 obj.removeClass("layui-icon-down").addClass('layui-icon-up');
+	 }
+	 return direc;
+  }
+   $("#btn_sort_zh").click(function(){
+	   var direc = getDirc($("#sort_zh"));
+	   $("#sort").val('');  
+	   $("#direc").val(direc);
+	   searchCall(3,false);
+    });
+   $("#btn_sort_pf").click(function(){
+	   
+	   
+    });
+   $("#btn_sort_zz").click(function(){
+	   var direc = getDirc($("#sort_zz"));
+	   $("#sort").val('author');  
+	   $("#direc").val(direc);
+	   searchCall(3,false);
+   });
+   $("#btn_sort_cbs").click(function(){
+	   var direc = getDirc($("#sort_cbs"));
+	   $("#sort").val('publishCompany');  
+	   $("#direc").val(direc);
+	   searchCall(3,false);
+   });
+   $("#btn_sort_cbsj").click(function(){
+	   var direc = getDirc($("#sort_cbsj"));
+	   $("#sort").val('publishYear');  
+	   $("#direc").val(direc);
+	   console.log(">>>>>>"+direc);
+	   searchCall(3,false);
+   });
+   $("#btn_sort_sm").click(function(){
+	   var direc = getDirc($("#sort_sm"));
+	   $("#sort").val('name');  
+	   $("#direc").val(direc);
+	   searchCall(3,false);
+   });
+   $(document).ready(function(){
+	   var sort = $("#sort").val();
+	   var direc = $("#direc").val();
+	   var clazeStr = '';
+	   if(direc && direc != 'asc'){
+		   clazeStr = 'layui-icon-down';
+	   }else{
+		   clazeStr = 'layui-icon-up';
+	   }
+	   if(sort == 'author'){
+		   $("#sort_zz").addClass(clazeStr);
+	   }else if(sort == 'publishCompany'){
+		   $("#sort_cbs").addClass(clazeStr);
+	   }else if(sort == 'publishYear'){
+		   $("#sort_cbsj").addClass(clazeStr);
+	   }else if(sort == 'name'){
+		   $("#sort_sm").addClass(clazeStr);
+	   }
+   });
+</script>
+<script>
+//var classStr = "[]";
+//var classObjArr = JSON.parse(classStr);
+var classObjArr = [];
+</script>
+<script>
+    var setting = {
+		view: {
+			showIcon: showIconForTree,
+			showLine : false,
+    		nameIsHTML: true
+		},
+		callback: {
+			onClick: onClickNode
+		},
+		data: {
+			simpleData: {
+				enable: true
+			}
+		}
+	};
+
+    
+
+	function showIconForTree(treeId, treeNode) {
+		return !treeNode.isParent;
+	}
+	
+	function onClickNode(event, treeId, treeNode, clickFlag){
+
+			  window.open("/search/bookClass/query?classZtf="+treeNode.classMark,'_blank');
+    }
+	
+    function filter(treeId, parentNode, childNodes) {
+    	if (null != parentNode && parentNode.count == 0) {
+			return ;
+		}
+		if (!childNodes) return null;
+		for (var i=0, l=childNodes.length; i<l; i++) {
+			var childName = childNodes[i].name;
+			if(childName.length > 14){
+				childName = childName.substr(0,9)+"...";
+			}
+			childNodes[i].name = childNodes[i].classMark+"."+childName.replace(/\.n/g, '.')+"("+childNodes[i].count+")";
+		}
+		return childNodes;
+	}
+    
+    function filter(classObjArr) {
+    	var map = {};
+    	var nodes = [];
+    	for(var i = 0;i< classObjArr.length;i++){
+    		var co = classObjArr[i];
+    		var obj = {};
+    		obj.id = co.id;
+    		var mid = co.id;
+    		map[mid] = {};
+    		map[mid].count = co.count;
+    		map[mid].index = i;
+    		var pid = co.parentId;
+    		obj.pId = pid;
+    		var childName = co.name;
+    		if(childName.length > 14){
+				childName = childName.substr(0,9)+"...";
+			}
+    		obj.name = co.classMark+"."+childName.replace(/\.n/g, '.')+"("+co.count+")";
+    		obj.classMark = co.classMark;
+			if(map[pid]){
+				var c =map[pid].count+ co.count;
+				map[pid].count = c;
+				var index = map[pid].index;
+				nodes[index].count = c;
+			}
+			nodes[i] = obj;
+    	}
+    	return nodes;
+    	
+	}
+    
+	$(document).ready(function(){
+	    var ztfSetting = setting;
+
+	   	var zNodes =[];
+	    if(classObjArr){
+	    	zNodes = filter(classObjArr);
+	    	$.fn.zTree.init($("#cnode"), ztfSetting,zNodes);
+	    }
+	    
+	    $("li.shaixuan-li").each(function(){
+	    	var obj = $(this).find("div.factedDiv");
+	   
+	    	if(!obj.length){
+	    		var idStr = $(this).attr("id");
+	    		if(idStr != "shuaixuan-all-li"){
+	    			$(this).css("display","none");
+	    		}
+	    	}
+	    });
+	    
+	    $(".shuaixuan-more").click(function(){
+	    	var state = $(this).attr("data-state");
+	    	if(!state || state == "close"){
+	    		var togId = $(this).attr("tog-id");
+	    		$(togId).height(600);
+	    		console.log(togId);
+	    		console.log($(togId));
+	    		$(this).text("收起<<<");
+	    		$(this).attr("data-state",'open');
+	    	}else{
+	    		var togId = $(this).attr("tog-id");
+	    		$(togId).height(150);
+	    		$(this).text("更多<<<");
+	    		$(this).attr("data-state",'close');
+	    	}
+	    });
+	    
+	    $(".shuaixuan-au").each(function(){
+	    	var auStr = $(this).text();
+	    	if(auStr && auStr != ''){
+	    		if(auStr.length > 14){
+	    			auStr = auStr.substring(0,14);
+	    			auStr += "...";
+	    			$(this).text(auStr);
+	    		}
+	    	}
+	    });
+	    
+	});
+</script>
+</body>
+</html>

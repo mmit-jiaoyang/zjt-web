@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>资源包首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lui/dist/layui/css/layui.css"  media="all">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="/lui/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="/f/css/index.css"  media="all">
+    <style>
+        .search-btn2{
+            height:30px;
+            padding-left: 12px;
+            padding-top: 3px;
+        }
+        .search-box2{
+            background: url(/f/img/search2-p1.png)  no-repeat left top;background-size: 100% 100%;
+        }
+        .search-box2 input{width:183px;height:23px;float: left; border: none;background-color: transparent;}
+        .search-box2 select{float: right;margin-right: 3px;border: none;height:23px;width:76px;border: none;background-color: transparent;}
+        .select-go-bg2{float: left;background: url(/f/img/search2-p2.png)  no-repeat left top   !important;}
+        .select-go2{background: url(/f/img/sgo.png)  no-repeat left top; background-size: 80% 80%;   height: 25px;
+            width: 25px;  border: none;}
+        .layui-breadcrumb span[lay-separator] {
+            margin: 0 5px;
+            color: #999;
+        }
+        .second-search{padding:16px 10px 0px 10px;height: 50px;}
+        .ds li{height: 153px;}
+        .tc li{text-align: center}
+        .scul li{text-align: center;margin-top: 16px;}
+        
+        .licence p{color:#0070c0;padding-left:34px;padding-right:20px;line-height: 26px;}
+        p.licence-title{font-size: 16px;padding-top: 5px;padding-bottom: 5px;padding-left:10px;} 
+    </style>
+</head>
+<body>
+<div class="header bg-f">
+        <div class="header-main">
+	  <div class="layui-row">
+	         <div class="layui-col-xs8">
+	           <a href="javascript:;" class="logo">
+	            <img src="/f/img/icon.png">
+	          </a>
+	          <ul lay-filter="" class="layui-nav menu-header">
+	            <li class="layui-nav-item "><a href="/f/index">首页</a></li>
+	             <li class="layui-nav-item"><a href="/f/ebook/index">电子书</a></li>
+	            <li class="layui-nav-item layui-this"><a href="/f/DDA/index">EBS</a></li>
+	            <li class="layui-nav-item"><a href="/f/respkg/index">资源包</a></li>
+	          </ul>
+	         </div>
+	          <div class="layui-col-xs4">
+                  <ul class="secondNav">
+
+                      <li ><span >192.168.33.7</span>,&nbsp;<span>会笑的菠萝</span></li>
+                      <li ><a href="/f/login">登录</a></li>
+                      <li class="mm-nav-item-small"><a href="javascript:void(1);">注册</a></li>
+                      <li class="mm-nav-item-small"><a  href="/a">管理后台</a></li>
+                  </ul>
+	          </div>
+	     </div>  
+         <script>
+             $(document).ready(function(){
+            	 $("#gotoPc").click(function(){
+            		 window.open("/f/pc/getDownLoadList?rows=30&page=0","_blank");
+            	 });
+             });
+         </script>
+
+    </div>
+
+</div>
+<div class=" header-buttom-bg"  >
+    <div class="layui-row">
+        <div class="layui-col-xs6 layui-col-xs-offset3 search-btn search-box">
+         <div class="search-wrap">
+            <input type="text" style="" id="svalue"/>
+            <select name="searchkey" lay-verify="" style="" id="searchKey">
+                <option value="all">全部</option>
+                <option value="name">书名</option>
+                <option value="publishCompany">出版社</option>
+                <option value="author">作者</option>
+                <option value="eisbn">ISBN</option>
+                <option value="pisbn">PISBN</option>
+                <option value="pdfContent">全文</option>
+            </select>
+            <div class="select-go-bg">
+             <button class="select-go"  style="" id="searchgo">&nbsp;</button>
+            </div>
+          </div>
+          <div class="search-btn-box">
+              <button   style="">高级检索</button>
+          </div>
+        </div>
+
+    </div>
+</div>
+
+<div class=" layui-main main" >
+    <div class="layui-row">
+        <div class=" main-content" >
+            <div class="layui-card second-search"  style="">
+                <div class="layui-col-xs2">
+                    当前位置：
+                    <span class="layui-breadcrumb" lay-separator=">">
+                      <a href=""><cite>EBS</cite></a>
+                        <a href=""></a>
+                    </span>
+                </div>
+                <div class="layui-col-xs4  search-btn2 search-box2">
+                     <input type="text" style="" id="secendVal"/>
+                    <select name="searchkey" lay-verify="" style="" id="secondSearchKey">
+                        <option value="all">全部</option>
+                        <option value="name">书名</option>
+                        <option value="pubComy">出版社</option>
+                        <option value="author">作者</option>
+                        <option value="eisbn">ISBN</option>
+                        <option value="pisbn">PISBN</option>
+                    </select>
+                </div>
+                <div class="layui-col-xs1 search-btn2 select-go-bg2">
+                    <button class="select-go2"  style="" id="secondSearchgo">&nbsp;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row" style="margin-top: 10px;">
+        <div class="layui-col-xs11 main-content">
+            <div class="layui-row">
+                    <div class="layui-row">
+                         <div class="layui-card " style="">
+                              <div class="layui-card-body licence" style="padding: 0px 0px;height:85px;overflow: hidden;" id="shuaixuan-pc-tab">
+                                <div style="padding: 10px;">
+                                  <p style="padding-left:10px;">
+                                   EBS:实证选书模式 (Evidence - based Selection，EBS)是一种新型的需求驱动采购模式。
+在EBS模式下，图书馆可以先用一笔订金预订某个范围内的电子书，读者将被允许试读该范围内的所有品种，经过一段时间的开放使用后，图书馆根据读者的使用记录决定最终购买哪些品种。一般来讲，最终的采购金额将不低于预付的订金。
+                                  </p>
+                                 <p class="licence-title">什么是EBS模式？</p>
+                                 <p>实证选书模式 (Evidence - based Selection，EBS)是一种新型的需求驱动采购模式。</p>
+                                 <p>
+                                  在EBS模式下，图书馆可以先用一笔订金预订某个范围内的电子书，读者将被允许试读该范围内的所有品种，经过一段时间的开放使用后，图书馆根据读者的使用记录决定最终购买哪些品种。一般来讲，最终的采购金额将不低于预付的订金。
+                                  </p>
+                                 <p class="licence-title">EBS模式的优势？</p>
+                                 <p><span style="font-size: 9pt;">l</span> &nbsp;&nbsp;为读者提供更广泛的阅读选择；</p>
+                                 <p><span style="font-size: 9pt;">l</span>&nbsp;&nbsp;采购图书与读者的使用偏好相吻合，使采购资金的使用效益最大化；</p>
+                                 <p><span style="font-size: 9pt;">l</span>&nbsp;&nbsp;节省采访馆员的选书时间；</p>
+                                 <p><span style="font-size: 9pt;">l</span>&nbsp;&nbsp;预算更可控。</p>
+                                  <p class="licence-title">EBS如何运作？</p>
+                                  <p><b><span style="font-size: 11pt;">1.</span></b><b><span style="font-size: 11pt;">付费</span></b></p>
+                                  <p>图书馆首先从支持EBS模式的出版社中选择开放试读的品种，并一次性预缴6个月或12个月的实证选书费，费用金额为开放总售价的一定比例，预缴比例视资源类型和数量而定。</p>
+                                  <p><b><span style="font-size: 11pt;">2.</span></b><b><span style="font-size: 11pt;">开放试读</span></b></p>
+                                  <p>CEPIEC将开放品种的元数据上传给图书馆指定的目录系统。</p>
+                                  <p>在开放期内，终端读者可以访问并试读所有的开放书目。</p>
+                                   <p><b><span style="font-size: 11pt;">3.</span></b><b><span style="font-size: 11pt;">采购决定</span></b></p>
+                                  <p>在一年开放期的最后三个月，或半年开放期的最后两个月，CEPIEC将向图书馆提供开放品种的使用报告。</p>
+                                  <p>图书馆根据使用情况选择将要购买的电子书品种，从每个出版商选出书目的总售价不少于该商的实证选书费。</p>
+                                   <p><b><span style="font-size: 11pt;">4.</span></b><b><span style="font-size: 11pt;">试用结束</span></b></p>
+                                   <p>开放期结束后，未被购买的电子书数据随即被移除。图书馆如果想购买更多的书目，需要另付费用。</p>
+                                </div>
+                                
+                              </div>
+                               <p style="padding-left: 80%;padding-bottom:6px;"><a href="javascript:void(1);" class="shuaixuan-more" tog-id="#shuaixuan-pc-tab" tog-height="700" org-height="85">更多>>></a></p>
+                         </div>
+                    </div>
+                    <div class="layui-row" style="margin-top: 10px;">
+                        <div class="layui-card " style="">
+                            <!-- -->
+                            <div class="layui-card-body " style="padding: 0px 0px;">
+                           
+                                <div class="layui-row">
+                                    <hr class="layui-bg-gray">
+                                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                                        <ul class="layui-tab-title">
+                                            <li class="">学科分类-哲学</li>
+                                        </ul>
+                                        <div class="layui-tab-content" style="padding-left: 30px;">
+                                            <div class="layui-col-xs6">
+
+                                                <div class="m-book-info f-cb">
+                                                    <a class="cover"  href="/f/DDA/detail" target="_blank" title="" data-model="zbtj#xs" data-opration="source">
+                                                        <img   src="/f/img/conver.png" alt="">
+
+                                                    </a>
+                                                    <h4><a href="javascript:void(1);" target="_blank" title="" >dda名称</a></h4>
+                                                    <p>数量:<span>&nbsp;</span><span >11</span></p>
+                                                    <p>dda使用说明dda使用说明dda使用说明</p>
+                                                </div>
+                                                <p><a href="/f/DDA/detail" target="_blank">查看详情</a></p>
+                                                <hr class="layui-bg-gray">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                <!-- right-->
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<div class="layui-container header-buttom"  >
+    <div style="width: 100%;background-color: #113361;clear: both;height:100px;line-height:100px;color: #FFFFFF;">
+        <p style="text-align: center">©2018-<span id="j-year">2019</span>&nbsp;&nbsp;京公网安备10000000110号</p>
+    </div>
+</div>
+<script src="/lui/dist/layui/layui.js" charset="utf-8"></script>
+
+<script>
+
+
+    layui.use('element', function(){
+        var element = layui.element;
+
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+
+</script>
+<script type="text/javascript" src="/f/search.js"></script>
+<script>
+ $(document).ready(function(){
+     $(".shuaixuan-more").click(function(){
+    	 var togId = $(this).attr("tog-id");  //tog-height="800" org-height="116"
+    	 var togState = $(this).attr("tog-state");
+    	 var txt = "";
+    	 if(togState && togState != "0"){
+    		 var orgHeight = $(this).attr("org-height");
+    		 $(togId).css("height",orgHeight+"px");
+    		 $(this).attr("tog-state","0");
+    		 txt="更多>>>";
+    	 }else{
+    		 var togHeight = $(this).attr("tog-height");
+    		 $(togId).css("height",togHeight+"px");
+    		 $(this).attr("tog-state","1");
+    		 txt="收起<<<";
+    	 }
+    	 $(this).text(txt);
+    	 
+     });
+ });
+
+</script>
+</body>
+</html>

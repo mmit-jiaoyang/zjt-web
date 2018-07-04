@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/f/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="/lui/dist/layui/css/layui.css"  media="all">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="/lui/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="/f/css/index.css"  media="all">
+    <style>
+          .layui-tab-title li{color: #000;border-bottom: 0px solid #1191cf;font-size: 15px;}
+          .my-btn-normal{background-color: #ffffff;color:#737373;font-size: 15px;}
+          .my-btn-force{background-color:#1191CF;color:#ffffff;font-size: 15px;}
+          .my-tab-ygzy .layui-table-header{display:none;}
+          .my-tab-ygzy .layui-table-cell{border:none;}
+          .my-tab-ygzy .layui-table-view{border:none;}
+          .my-tab-ygzy{/*border-top:solid;border-color: #e6e6e6; border-top-width: 1px;*/}
+          .my-tab-ygzy .layui-table, .my-tab-ygzy .layui-table-view{margin-top:0px;}
+          .cart-title2{vertical-align: middle;padding-left: 10px;}
+          .respkg-detail{padding: 3px 5px 3px 27px;overflow: hidden; text-overflow: ellipsis;
+                          height: 65px;display: block;word-break: break-all;word-wrap: break-word;width: 84%;}
+          .respkg-li{height:94px;}
+          .cbsdh-a{    display: block;width: 100%;padding: 0px 0px 5px 30px;}
+          
+         .card-title-zyzl{background: url(/f/img/zyzs.png) no-repeat 10px 7px !important;}
+         .cart-title-sp{margin-left: 18px;}
+         .cart-title-zybtj{background: url(/f/img/Rectangle%204.png) no-repeat 10px 7px !important;}
+         .cart-title-xstj{background: url(/f/img/xstj.png) no-repeat 10px 7px !important;} 
+         .cart-title-cnxh{background: url(/f/img/cnxh.png) no-repeat 10px 7px !important;}
+         .cart-title-cbsdh{background: url(/f/img/cbsdh.png) no-repeat 10px 7px !important;}
+         .cart-title-ygzy{background: url(/f/img/ygzy.png) no-repeat 10px 7px !important;} 
+         .book h4,.book p{padding:0px 4px;}
+         .book p.star{padding:0px 4px;}
+         .layui-laypage .layui-laypage-curr .layui-laypage-em {background-color: #1191CF;}
+    </style>
+</head>
+<body>
+<div class="header bg-f">
+    <div class="header-main">
+	  <div class="layui-row">
+	         <div class="layui-col-xs8">
+	           <a href="javascript:;" class="logo">
+	            <img src="/f/img/icon.png">
+	          </a>
+	          <ul lay-filter="" class="layui-nav menu-header">
+	            <li class="layui-nav-item layui-this"><a href="/f/index">首页</a></li>
+	             <li class="layui-nav-item"><a href="/f/ebook/index">电子书</a></li>
+	            <li class="layui-nav-item"><a href="/f/DDA/index">EBS</a></li>
+	            <li class="layui-nav-item"><a href="/f/respkg/index">资源包</a></li>
+	          </ul>
+	         </div>
+	          <div class="layui-col-xs4">
+                  <ul class="secondNav">
+
+                      <li ><span >192.168.33.7</span>,&nbsp;<span>会笑的菠萝</span></li>
+                      <li ><a href="/f/login">登录</a></li>
+                      <li class="mm-nav-item-small"><a href="javascript:void(1);">注册</a></li>
+                      <li class="mm-nav-item-small"><a  href="/a">管理后台</a></li>
+                  </ul>
+	          </div>
+	     </div>  
+         <script>
+             $(document).ready(function(){
+            	 $("#gotoPc").click(function(){
+            		 window.open("/f/pc/getDownLoadList?rows=30&page=0","_blank");
+            	 });
+             });
+         </script>
+
+    </div>
+
+</div>
+<div class=" header-buttom-bg"  >
+    <div class="layui-row">
+        <div class="layui-col-xs6 layui-col-xs-offset3 search-btn search-box">
+         <div class="search-wrap">
+            <input type="text" style="" id="svalue"/>
+            <select name="searchkey" lay-verify="" style="" id="searchKey">
+                <option value="all">全部</option>
+                <option value="name">书名</option>
+                <option value="publishCompany">出版社</option>
+                <option value="author">作者</option>
+                <option value="eisbn">ISBN</option>
+                <option value="pisbn">PISBN</option>
+                <option value="pdfContent">全文</option>
+            </select>
+            <div class="select-go-bg">
+             <button class="select-go"  style="" id="searchgo">&nbsp;</button>
+            </div>
+          </div>
+          <div class="search-btn-box">
+              <button   style="">高级检索</button>
+          </div>
+        </div>
+
+    </div>
+</div>
+<div class=" layui-main main" style="">
+
+        <div class=" main-content">
+            <div class="layui-row">
+                <div class="layui-col-xs3">
+                    <div class="layui-row">
+                        <div class="layui-card " style="">
+                            <a class="at card-title-zyzl"><span class="cart-title cart-title-sp">资源总量</span></a>
+                            <div class="layui-card-body cart-title" style="padding-left: 60px;">
+                                123
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row" style="margin-top: 10px;">
+                        <div class="layui-tab layui-tab-card left-class-tab">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this tab-class-title" style="width:50%;padding: 0px 0px;">中图分类</li>
+                                <li class="tab-class-title" style="width:50%;padding: 0px 0px;">教育部分类</li>
+                            </ul>
+                            <div class="layui-tab-content left-class-content" style="overflow-y: auto;">
+                               <div class="layui-tab-item layui-show">
+                               <ul id="cnode" class="ztree"></ul>
+                               </div>
+                                <div class="layui-tab-item">
+                                <ul id="cnode2" class="ztree"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="layui-row" style="margin-top: 15px;">
+                        <div class="layui-card" style="">
+                            <div class="layui-card-header" style="height: 48px;line-height: 48px;">
+                                <a  class="at cart-title-cbsdh"><span class="cart-title cart-title-sp">出版社导航</span></a>
+
+                            </div>
+                            <div class="layui-card-body " style="padding-left: 0px;">
+                               <div class="layui-row">
+                                    <a class="layui-col-xs3 cbsdh-a"  target="_blank" href="/search/book/query?searchField=publishCompany&searchValue=Routledge">
+                                       <img src="/f/img/pc/taylor.jpg"/>
+                                    </a>
+                                </div> 
+                                <div class="layui-row">
+                                    <a class="layui-col-xs3 cbsdh-a"  target="_blank" href="/search/book/query?searchField=publishCompany&searchValue=De Gruyter">
+                                       <img src="/f/img/pc/degruyter1.jpg"/>
+                                    </a>
+                                </div> 
+                                
+                                <div class="layui-row">
+                                    <a class="layui-col-xs3 cbsdh-a"  target="_blank" href="/search/book/query?searchField=publishCompany&searchValue=IGI">
+                                       <img src="/f/img/pc/IGI.jpg"/>
+                                    </a>
+                                </div>  
+                               <div class="layui-row">
+                                    <a class="layui-col-xs3 cbsdh-a" target="_blank" href="/search/book/query?searchField=publishCompany&searchValue=cengage">
+                                       <img src="/f/img/pc/cengage.png"/>
+                                    </a>
+                                </div>   
+                                 <div class="layui-row">
+                                    <a class="layui-col-xs3 cbsdh-a"  target="_blank" href="/search/book/query?searchField=publishCompany&searchValue=alpha">
+                                       <img src="/f/img/pc/alpha.jpg"/>
+                                    </a>
+                                </div> 
+                     
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- right-->
+                <div class="layui-col-xs9 ">
+                    <div class="layui-carousel" id="test1" lay-filter="test1" style="margin-left: 15px;width: 100%;">
+                        <div carousel-item="">
+                            <div><img src="/f/img/pc/banner/emerald.png"  height="100%" width="100%"></div>
+                            <div><img src="/f/img/pc/banner/cambridge.png"  height="100%" width="100%"></div>
+                             <div><img src="/f/img/pc/banner/banner_oed.png"  height="100%" width="100%"></div>
+                             <div><img src="/f/img/pc/banner/banner.png"  height="100%" width="100%"></div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="layui-row" style="margin-left: 15px;margin-top: 15px;">
+                      <div class="layui-card">
+                       <div class="layui-card-header" style="height: 48px;line-height: 48px;"> 
+                                <a  class="at cart-title-ygzy"><span class="cart-title cart-title-sp" style="color:#000000;">已购资源</span></a>
+                                <span class="layui-badge-dot layui-bg-blue" style="margin-left: 30px;"></span>
+                                <span class="layui-badge-dot layui-bg-black"></span>
+                                <span class="layui-badge-dot layui-bg-gray"></span>
+                                <a style="background: url(/f/img/shangyiye.png) no-repeat center;"></a>
+                                <span></span>
+                        </div>
+                        <div class="layui-card-body " style="padding-left: 0px;padding-right:0px;">
+                            <div class="layui-row" style="padding: 10px 25px 10px 25px;">
+                                <button class="layui-btn layui-btn-xs  layui-btn-radius my-tab-nav my-btn-normal my-btn-force" lay-id="dzs">电子书</button>
+                                <button class="layui-btn layui-btn-xs  layui-btn-radius my-tab-nav my-btn-normal" lay-id="dda">EBS</button>
+                                <button class="layui-btn layui-btn-xs  layui-btn-radius my-tab-nav my-btn-normal" lay-id="zyb">资源包</button>
+                            </div>
+	                        <div class="layui-tab  layui-tab-brief my-tab-ygzy" lay-filter="my-tab-filter-yg">
+	                            <ul class="layui-tab-title" style="display:none;">
+	                        
+	                                 <li class="layui-this"  lay-id="dzs">
+	                                                                                                   电子书
+	                                </li>
+	                                 <li class="" lay-id="dda">
+	                                    EBS
+	                                </li>
+	                                 <li class="" lay-id="zyb">
+	                                                                                                    资源包
+	                                </li>
+	                               
+	                            </ul>
+	                            <div class="layui-tab-content" style="height:383px;padding:0px;">
+	                               <div class="layui-tab-item layui-show" id="tab-item-ebook">
+	                                  <table id="ebook-items" lay-even class="layui-table ebook-items" lay-skin="nob" lay-filter="ygtabEvent"> 
+	                                  </table>
+	                               </div>
+	                                <div class="layui-tab-item" id="tab-item-ebs">
+	                                   <table id="ebs-items"  lay-even class="layui-table ebs-items" lay-skin="nob" lay-filter="ygtabEvent">
+	                                   </table>
+	                                </div>
+	                                <div class="layui-tab-item" id="tab-item-res">
+	                                   <table id="res-items"  lay-even class="layui-table res-items" lay-skin="nob" lay-filter="ygtabEvent">
+	                                   </table>
+	                                </div>
+	                            </div>
+	                        </div>
+                         </div>
+                       </div>  
+                    </div>
+                    
+                    
+                    <div class="layui-row" style="margin-left: 15px;margin-top: 15px;">
+                        <div class="layui-col-xs6">
+                            <div class="layui-card " style="margin-right: 5px">
+                                <div class="layui-card-header" style="height: 48px;line-height: 48px;">
+                                    <a  class="at cart-title-zybtj"><span class="cart-title cart-title-sp">资源包推荐</span></a>
+                                    <span class="layui-badge-dot layui-bg-blue" style="margin-left: 30px;"></span>
+                                    <span class="layui-badge-dot layui-bg-black"></span>
+                                    <span class="layui-badge-dot layui-bg-gray"></span>
+                                    <a style="background: url(/f/img/shangyiye.png) no-repeat center;"></a>
+                                    <span></span>
+                                </div>
+
+                                <div class="layui-card-body" style="padding:10px 20px;">
+                                    <ul class="ds" >
+                                       <li  class="respkg-li" style="height:94px;">
+                                           <div class="m-book-info f-cb">
+                                         
+                                               <h4>
+                                                 <a  target="_blank" title="">
+                                                   <img src="/f/img/pailiey.png" style="width: 20px; height: 20px;">
+                                                   <span class="cart-title2" >respkg name</span>
+                                                 </a>
+                                               </h4>
+                                               <div class="respkg-detail">respkg detail respkg detail respkg detail </div>
+                  
+
+                                           </div>
+                                       </li>
+                                  
+
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs6">
+                            <div class="layui-card " style="margin-left: 5px">
+                                <div class="layui-card-header" style="height: 48px;line-height: 48px;">
+                                     <a  class="at cart-title-xstj"><span class="cart-title cart-title-sp">新书推荐</span></a>
+                                    <span class="layui-badge-dot layui-bg-blue" style="margin-left: 30px;"></span>
+                                    <span class="layui-badge-dot layui-bg-black"></span>
+                                    <span class="layui-badge-dot layui-bg-gray"></span>
+                                    <a style="background: url(/f/img/shangyiye.png) no-repeat center;"></a>
+                                    <span></span>
+                                </div>
+                                <div class="layui-card-body m-book-ft" style="padding-left: 0px;">
+                                    
+                                    
+                                    <ul class="book" >
+                                        <li >
+                                            <a class="cover2"  target="_blank" data-model="jptu" data-opration="jpts_img" >
+                                                   <img  src="/f/img/cover.png" alt="">
+                                            </a>
+                                            <h4><a href="javascript:void(1);" class="fav-book-name" target="_blank" data-model="jptu" data-opration="jpts_txt" title="">ebook name</a></h4>
+                                            <p >ebook author</p>
+                                            <p class="star">
+	                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i> 
+	                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+	                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+	                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+	                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                            </p>
+                                        </li>
+                                 
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row" style="margin-left: 15px;margin-top: 15px;">
+                        <div class="layui-card " style="">
+                            <div class="layui-card-header" style="height: 48px;line-height: 48px;">
+                               <a  class="at cart-title-cnxh"><span class="cart-title cart-title-sp">猜你喜欢</span></a>
+                                <span class="layui-badge-dot layui-bg-blue" style="margin-left: 30px;"></span>
+                                <span class="layui-badge-dot layui-bg-black"></span>
+                                <span class="layui-badge-dot layui-bg-gray"></span>
+                                <a style="background: url(/f/img/shangyiye.png) no-repeat center;"></a>
+                                <span></span>
+                            </div>
+                            <div class="layui-card-body m-book-ft" style="padding-left: 0px;">
+                                <ul class="book" >
+                                    <li >
+                                        <a class="cover2"  target="_blank" data-model="jptu" data-opration="jpts_img" >
+                                            <img src="/f/img/conver.png" alt="">
+                                          
+                                        </a>
+                                        <h4><a href="javascript:void(1);" class="fav-book-name" target="_blank" data-model="jptu" data-opration="jpts_txt" title="">ebook name</a></h4>
+                                       <p>ebook author</p>
+                                        <p class="star"><i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i> 
+                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                           <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+            </div>
+        </div>
+        
+    
+    
+    <div class="layui-row">    
+    </div>
+
+
+</div>
+
+<div class="layui-container header-buttom"  >
+    <div style="width: 100%;background-color: #113361;clear: both;height:100px;line-height:100px;color: #FFFFFF;">
+        <p style="text-align: center">©2018-<span id="j-year">2019</span>&nbsp;&nbsp;京公网安备10000000110号</p>
+    </div>
+</div>
+<script src="/lui/dist/layui/layui.js" charset="utf-8"></script>
+
+<script>
+
+    layui.use(['carousel', 'form'], function(){
+        var carousel = layui.carousel
+                ,form = layui.form;
+
+        carousel.render({
+            elem: '#test1'
+            ,height:'280px'
+            ,arrow: 'always'
+        });
+
+
+
+        var $ = layui.$, active = {
+            set: function(othis){
+                var THIS = 'layui-bg-normal'
+                        ,key = othis.data('key')
+                        ,options = {};
+
+                othis.css('background-color', '#5FB878').siblings().removeAttr('style');
+                options[key] = othis.data('value');
+                ins3.reload(options);
+            }
+        };
+
+    });
+
+    layui.use('element', function(){
+        var element = layui.element;
+
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+        
+    });
+    
+
+</script>
+<script type="text/javascript" src="/f/zTree/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="/f/search.js"></script>
+<script>
+    var setting = {
+		view: {
+			showIcon: showIconForTree,
+			showLine : false,
+    		nameIsHTML: true
+		},
+		callback: {
+			onClick: onClickNode
+		},
+
+		
+		async:{
+    		enable: true,
+    		url:"/f/booksClass/sub?grade=1&isAll=false",
+    		autoParam:["id","parentId"],
+    		dataFilter: filter
+    	}
+	};
+    
+    function filter(treeId, parentNode, childNodes) {
+    	if (null != parentNode && parentNode.count == 0) {
+			return ;
+		}
+		if (!childNodes) return null;
+		for (var i=0, l=childNodes.length; i<l; i++) {
+			var childName = childNodes[i].name;
+			if(childName.length >= 11){
+				childName = childName.substr(0,9)+"...";
+			}
+			childNodes[i].name = childNodes[i].classMark+"."+childName.replace(/\.n/g, '.')+"("+childNodes[i].count+")";
+		}
+		return childNodes;
+	}
+    
+
+	function showIconForTree(treeId, treeNode) {
+		return !treeNode.isParent;
+	}
+	function onClickNode(event, treeId, treeNode, clickFlag){
+		  
+		  if(treeNode.type == 3){
+		    	 window.open("/search/bookClass/query?classEdu="+treeNode.classMark,'_blank');
+		    	 return;
+		  }
+		window.open("/search/bookClass/query?classZtf="+treeNode.classMark,'_blank');
+	}
+
+	
+	var currentTabBtn = null;
+	$(document).ready(function(){
+
+	    var ztfSetting = setting;
+	    ztfSetting.async.url = "/f/booksClass/sub?grade=1&isAll=false&type=4"
+		$.fn.zTree.init($("#cnode"), ztfSetting);
+	    
+		$(".my-tab-nav").each(function(){
+			if($(this).hasClass("my-btn-force")){
+				currentTabBtn = $(this);
+
+			}
+		});
+		
+		   var eduSetting = setting;
+		    eduSetting.async.url = "/f/booksClass/sub?grade=1&isAll=false&type=3";
+			$.fn.zTree.init($("#cnode2"), eduSetting);
+			
+	});
+	
+    var currlayId = '';
+	$(".my-tab-nav").click(function(){
+		var layid=$(this).attr("lay-id");
+		if(currlayId === layid){
+			return;
+		}
+		$(this).addClass("my-btn-force");
+		if(currentTabBtn){
+			currentTabBtn.removeClass("my-btn-force");
+		}
+		currentTabBtn = $(this);
+		var ele = layui.element;
+		ele.tabChange('my-tab-filter-yg', layid);
+	});
+    function ygztTabChange(){
+    	alert("tab change");
+    }
+</script>
+<script >
+
+   function rehandleTableStyle(querySelector){
+	  $(querySelector).each(function(){
+		 var i = $(this).attr("data-index");
+		 if((i % 2) == 0){
+			 $(this).css('background-color','#e6e6e6');
+		 }
+	  });
+   }
+  
+   layui.use('table', function(){
+	   var colsArr=[{field:'name',title:'name',type:'normal',event:'bookDetail'}
+       ,{field:'author',title:'author',type:'normal'}
+       ,{field:'publishCompany',title:'publishCompany',type:'normal'}
+       ];
+	   var table = layui.table;
+	  // console.log(table);
+	   table.render({
+	 	  elem: '#ebook-items'
+	 		,height: 380
+	 	  ,page:true
+	 	  ,limit:8
+	 	  ,loading:true
+	       ,url: '/f/lm/buyed/books'
+	       ,text:{none:'暂无数据'}
+	       ,cols: [colsArr]
+	       ,skin:'nob'
+	       ,even:true
+	       ,done: function(res, curr, count){
+
+	       }
+	 	});
+	   
+	   table.on('tool(ygtabEvent)', function(obj){ 
+		    var data = obj.data;
+		    if(obj.event === 'bookDetail'){
+	          var url = "/f/ebook/detail?id="+data.id;
+	          window.open(url,"_blank ");
+		    }else if(obj.event === 'respkgDetail'){	   
+		        var url = "/f/respkg/detail?rid="+data.id;
+		         window.open(url,"_blank ");
+		    }else if(obj.event === 'ebsDetail'){
+		    	 var url = "/f/DDA/detail?rid="+data.id;
+		         window.open(url,"_blank ");
+		    }
+		 });
+	   
+	   var ebsColsArr = [{field:'name',title:'name',type:'normal',event:'ebsDetail'}
+       ,{field:'id',title:'idStr',type:'normal'}
+       ,{field:'useGuide',title:'useGuide',type:'normal'}
+       ];
+	   table.render({
+		 	  elem: '#ebs-items'
+		 	,height: 380
+		 	  ,page:true
+		 	  ,limit:8
+		 	  ,loading:true
+		       ,url: '/f/lm/buyed/ddas'
+		       ,text:{none:'暂无数据'}
+		       ,cols: [ebsColsArr]
+		       ,skin:'nob'
+		       ,even:true
+		       ,done: function(res, curr, count){
+
+		       }
+		});
+	   
+	   var resColsArr = [{field:'name',title:'name',type:'normal',event:'respkgDetail'}
+       ,{field:'id',title:'idStr',type:'normal'}
+       ,{field:'useGuide',title:'useGuide',type:'normal'}
+       ];
+	   table.render({
+		 	  elem: '#res-items'
+		 	  ,height: 380
+		 	  ,page:true
+		 	  ,limit:8
+		 	  ,loading:true
+		       ,url: '/f/lm/buyed/respkgs'
+		       ,text:{none:'暂无数据'}
+		       ,cols: [resColsArr]
+		       ,skin:'nob'
+		       ,even:true
+		       ,done: function(res, curr, count){
+
+		       }
+		});
+	   
+        
+    });
+
+</script>
+</body>
+</html>

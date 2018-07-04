@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>图书详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lui/dist/layui/css/layui.css"  media="all">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="/lui/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="/f/css/index.css"  media="all">
+    <style>
+        .search-btn2{
+            height:30px;
+            padding-left: 12px;
+            padding-top: 3px;
+        }
+        .search-box2{
+            background: url(/f/img/search2-p1.png)  no-repeat left top;background-size: 100% 100%;
+        }
+        .search-box2 input{width:183px;height:23px;float: left; border: none;background-color: transparent;}
+        .search-box2 select{float: right;margin-right: 3px;border: none;height:23px;width:76px;border: none;background-color: transparent;}
+        .select-go-bg2{float: left;background: url(/f/img/search2-p2.png)  no-repeat left top   !important;}
+        .select-go2{background: url(/f/img/sgo.png)  no-repeat left top; background-size: 80% 80%;   height: 25px;
+            width: 25px;  border: none;}
+        .layui-breadcrumb span[lay-separator] {
+            margin: 0 5px;
+            color: #999;
+        }
+        .second-search{padding:16px 10px 0px 10px;height: 50px;}
+        .ds li{height: 153px;}
+        .tc li{text-align: center}
+        .scul li{text-align: center;margin-top: 16px;}
+        .scul li a.cover2 img{    width: 112px;height: 153px;}
+        .m-detal-info p span{padding:0px 10px;color: #20b8ff;font-size: 15px;}
+        .m-detal-info p{line-height: 30px;font-size:16px;}
+        /*
+        .title-1 a span{    padding-left: 15px;  background: url(/f/img/icon-left-li.png) 0px 0px no-repeat;}
+        */
+        .title-1 a span{    padding-left: 15px;  background: url(/f/img/icon-left-li2.png) 0px 0px no-repeat;}
+        .eps{    line-height: 36px;
+            font-weight: 500;
+            font-size: 16px;
+            color: #888;
+            padding-left: 10px;margin-top: 12px;}
+          .eps label{ color: #888;}
+          p.eps a:hover{color:#0071CD;}
+          p.eps a{cursor: pointer;}
+           p.eps a label{cursor: pointer;}
+           .leftdetial{height: 150px;}
+           .btn-color{background-color: #1191CF;}
+    </style>
+</head>
+<body>
+
+
+<div class="layui-container layui-main main" >
+
+    <div class="layui-row" style="margin-top: 10px;">
+        <div class="layui-col-xs9 layui-col-xs-offset2">
+            <div class="layui-row">
+
+                <div class="layui-col-xs9">
+                        <div class="layui-card " style="">
+                            <!-- -->
+                            <div class="layui-card-body " style="padding: 20px 0px 10px 35px;">
+                                <div class="layui-row">
+                                    <h4 style="font-weight: 500;font-size: 16px;"><a href="javascript:void(1);" target="_blank" title="" >宠你一世又何妨</a></h4>
+                                </div>
+                                <div class="layui-row">
+                                    <div class="layui-col-xs6" >
+                                        <div class="m-book-info f-cb">
+                                            <a class="cover leftdetial" href="javascript:void(1);"  target="_blank" title="" data-model="zbtj#xs" data-opration="source">
+                                                <img src="/f/img/cover.png"  alt="">
+                                            </a>
+
+                                           <p class="line-ellips">ebook author </p>
+                                            <p>出版社:<span>welly</span></p>
+                                            <p >2015</p>
+                                           
+                                            <p>EISBN:&nbsp;<span>9887561485</span></p>
+                                             <p>PISBN:&nbsp;<span>9887561485</span></p>
+                                            <p>评分:<i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>
+                                               <i class="layui-icon layui-icon-rate-solid" style="font-size: 16px; color: #FFB24B;"></i>  
+                                            </p>
+                                             <p id="freelabel">免费</p>
+                                            <p id="sampleBtn" data-sample="12"><a class="">试读</a>
+                                            </p>
+                                        </div>
+                                    </div>   
+                                    <div class="layui-col-xs6" >
+                                        <div class="m-book-info f-cb m-detal-info" style="padding-top: 20px;">
+                                        
+                                            <p>知识图谱星级<span>5</span>评论数量<span>100</span></p>
+                                            <p>亚马逊评分<span>8.5</span>&nbsp;&nbsp;CAR评级<span>9.1</span></p>
+                                            <p>被引数量<span>30</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="layui-row" style="margin: 25px 0px;">     
+                                    <a class="layui-btn layui-btn-normal layui-btn-radius btn-color"  id="onlineRead">在线阅读</a>
+                                    <button class="layui-btn layui-btn-normal layui-btn-radius btn-color" id="addCartBtn" >加入采选车</button>
+                                </div>
+                                <script >
+                                    var bookId = [[${book.id}]];
+                                    var samplePagenum=[[${book.samplePagenum}]];
+                                    var isFree = [[${book.isFree}]];
+                                </script>
+                                <script type="text/javascript">
+                                  
+                                    function showActionBtns(data){
+                                    	 var isBuyed = data.data.buyed;
+                                    	 
+                                    	 if(isBuyed){
+                                    		  document.getElementById("onlineRead").style.display="inline-block";
+                                        	  document.getElementById("downBtn").style.display="inline-block"; 
+                                            	
+                                    	 }else{
+                                    		 
+                                    		 if(samplePagenum && samplePagenum != '0'){
+                                    			 document.getElementById("sampleBtn").style.display="none";
+                                    		 }
+                                    	 }
+                                    }
+                                    if(!isFree || isFree ==0 || isFree == '0'){
+                                    	var url = "/f/bookAccess/buyed?bookId="+bookId;
+                                    	var param = null;
+                                    	$.ajax({
+    	                                    url:url,
+    	                                    contentType:"application/json;charset=UTF-8",
+    	                                    type:"POST",
+    	                                    dataType:"json",
+    	                                    async: false,
+    	                                    data:param?JSON.stringify(param):null,
+    	                                    success:function(data){
+    	                                    	
+    	                                    	showActionBtns(data);
+    	                                    },
+    	                                    error:function(jqXHR,textStatus,errorThrown){
+    	                                       
+    	                                    }
+    	                                });
+                                    }else{
+                                    	 document.getElementById("onlineRead").style.display="inline-block";
+                                    	 document.getElementById("downBtn").style.display="inline-block"; 
+                                    }
+	                                
+                                </script>
+                                <div class="layui-row title-1">
+                                    <a href="javascript:void(1);" class="cart-title" style="color:#0071CD;"><span>知识图谱</span></a>
+                                     <div id="container" style="height: 253px">
+                                         <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+								       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+								       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+								       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+								       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+								       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+								       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+								       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+								       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+								       <script type="text/javascript">
+											var dom = document.getElementById("container");
+											var myChart = echarts.init(dom);
+											var app = {};
+											option = null;
+											app.title = '力引导布局';
+											
+											myChart.showLoading();
+											$.get('/f/les-miserables.gexf', function (xml) {
+											    myChart.hideLoading();
+											
+											    var graph = echarts.dataTool.gexf.parse(xml);
+											    var categories = [];
+											    for (var i = 0; i < 3; i++) {
+											        categories[i] = {
+											            name: ''
+											        };
+											    }
+											    
+											    graph.nodes.forEach(function (node) {
+											        node.itemStyle = null;
+											        node.value = node.symbolSize;
+											        node.symbolSize /= 1.5;
+											        node.label = {
+											            normal: {
+											                show: node.symbolSize > 30
+											            }
+											        };
+											        node.category = node.attributes.modularity_class;
+											    });
+											    
+											    option = {
+											            title: {
+											                text: '',
+											                subtext: '',
+											                top: 'bottom',
+											                left: 'right'
+											            },
+											            tooltip: {},
+											            legend: [{
+											                // selectedMode: 'single',
+											                data: categories.map(function (a) {
+											                    return a.name;
+											                })
+											            }],
+											            animationDuration: 1500,
+											            animationEasingUpdate: 'quinticInOut',
+											            series : [
+											                {
+											                    name: 'Les Miserables',
+											                    type: 'graph',
+											                    layout: 'none',
+											                    data: graph.nodes,
+											                    links: graph.links,
+											                    categories: categories,
+											                    roam: true,
+											                    focusNodeAdjacency: true,
+											                    itemStyle: {
+											                        normal: {
+											                            borderColor: '#fff',
+											                            borderWidth: 1,
+											                            shadowBlur: 10,
+											                            shadowColor: 'rgba(0, 0, 0, 0.3)'
+											                        }
+											                    },
+											                    label: {
+											                        position: 'right',
+											                        formatter: '{b}'
+											                    },
+											                    lineStyle: {
+											                        color: 'source',
+											                        curveness: 0.3
+											                    },
+											                    emphasis: {
+											                        lineStyle: {
+											                            width: 10
+											                        }
+											                    }
+											                }
+											            ]
+											        };
+											
+											    myChart.setOption(option);
+											}, 'xml');;
+											if (option && typeof option === "object") {
+											    myChart.setOption(option, true);
+											}
+                                          </script>
+                                     </div>
+                                </div>
+
+                                <div class="layui-row title-1" >
+                                    <a href="" class="cart-title" style="color:#0071CD;"><span>关键词</span></a>
+                                    <p class="disc eps" >show basketball football</p>
+                                </div>
+
+                                <div class="layui-row title-1" >
+                                    <a href="" class="cart-title" style="color:#0071CD;"><span>推荐语</span></a>
+                                    <p class="disc eps" >show basketball football</p>
+                                </div>
+                                <div class="layui-row title-1" >
+                                    <a href="" class="cart-title" style="color:#0071CD;"><span>内容介绍</span></a>
+                                    <p class="disc eps" >show basketball football</p>
+                                </div>
+
+                                <div class="layui-row title-1">
+                                    <a href="javascript:void(1);" class="cart-title" style="color:#0071CD;"><span>目录</span></a>
+                                    <div  class="layui-col-xs12">
+                                        <p class="disc eps"  style="line-height: 28px;font-size: 15px;">
+                                           <a >
+                                            <label >1</label>、
+                                            <label>第一章 111111eaaa</label>
+                                            <label>23</label>
+                                            </a>
+                                        </p>
+                                      
+                                    </div>
+                                    
+                                      
+                                </div>
+                                <div class="layui-row title-1">
+                                    <a href="" class="cart-title" style="color:#0071CD;"><span>参考文献</span></a>
+                                    <p class="disc eps">&nbsp;</p>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                </div>
+
+                <!-- right-->
+
+
+            </div>
+        </div>
+    </div>
+ 
+
+
+</div>
+<div class="layui-container header-buttom"  >
+    <div style="width: 100%;height: 142px;background-color: #113361;clear: both;padding-top: 56px;color: #FFFFFF;">
+        <p style="text-align: center">©2018-<span id="j-year">2019</span>&nbsp;&nbsp;京公网安备10000000110号</p>
+    </div>
+</div>
+<script src="/lui/dist/layui/layui.js" charset="utf-8"></script>
+
+
+
+</body>
+</html>

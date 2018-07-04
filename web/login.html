@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>用户登录</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <style type="text/css">
+     .login-page,.register-page {
+    background: url('/f/img/loginBg.jpg') no-repeat;
+    background-size: 100% 100%;
+ }
+.login-box,.register-box{
+        width:600px;
+        height:430px;
+        background:#fff;
+}
+.login_box_left{
+        width:50%;
+        height:100%;
+        float:left;
+        padding:100px 20px;
+}
+.login_box_left .login_img{
+        width:100%;
+        height:200px;
+}
+.login-box-body{
+        width:50%;
+        float:left;
+}
+.state_type{
+        width:50%;
+        height:40px;
+        line-height:40px;
+        padding:0;
+        margin-bottom:20px;
+}
+.state_type li{
+        float:left;
+        list-style:none;
+        width:50%;
+        height:100%;
+        text-align: center;
+}
+.state_type li.active{
+        color:#1191cf;
+        border-bottom:2px solid #1191cf;
+}
+#login_page{
+        margin-top:20px;
+}
+#register_page{
+        display:none;
+}
+.close_padding{
+        padding:0;
+}
+  </style>
+</head>
+<body class="hold-transition login-page">
+<div style="width:100%;height:40px">
+   <iframe src="/f/title.html" frameborder="0" width="100%" height="100%"></iframe>
+ </div>
+<div class="login-box">
+  <div class="login-logo">
+     <b></b>
+  </div>
+   <div class="login_box_left">           
+           <img src="/f/img/loginLeft.jpg" class="login_img">
+   </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+   
+     
+       
+     <ul class="state_type" id="state_type">
+         <li class="active">登 录</li>
+         <li>注 册</li>
+     </ul>
+
+    <form action="/f/login" method="post" id="login_page">
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="用户名/读者卡号" name="username">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="密码" name="password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label style="padding-left: 16px;">
+              <input type="checkbox" name="rm"> 记住我
+            </label>
+          </div>
+        </div>
+      
+      </div>
+      
+        <!-- /.col -->
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+        </div>
+        <!-- /.col -->
+        
+      <div class="row">
+        <div class="col-xs-8">
+           <label style="text-align:center;">登录提示信息</label>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-2">
+          
+        </div>
+        <!-- /.col -->
+      </div>
+      
+    </form>
+    
+    
+           <form action="" method="post" id="register_page">
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="姓  名" name="username">
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="读者卡号" name="card_num">
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="密  码" name="password">
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="确认密码" name="confirm_password">
+                </div>
+                <div class="form-group has-feedback">
+                   <select name="users" class="form-control">
+                     <option value="1">用户组</option>
+                     <option value="2">用户1</option>
+                     <option value="3">用户2</option>
+                     <option value="4">用户3</option>
+                   </select> 
+                </div>
+                <div class="row close_padding">
+                    <div class="col-xs-12 ">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">注  册</button>
+                    </div>
+                </div>
+            </form>
+
+
+    <br>
+    <a href="http://www.mingmeiit.com" class="text-center">Copy right by MMIT</a>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery 3 -->
+<script src="/lui/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="/plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+	  
+	  var state = window.location.search.substr(1).split("=")[1];
+      if(state){
+          if(state =="2"){
+                $("#state_type li").eq(1).addClass('active').siblings().removeClass('active');
+                $("#login_page").css('display',"none");
+                $("#register_page").css('display',"block");
+         }
+      }
+      
+      
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+  
+  $("#state_type li").click(function(){
+      $(this).addClass('active').siblings().removeClass('active');
+      if($(this).index()=='0'){
+        $("#login_page").css('display',"block");
+        $("#register_page").css('display',"none");
+      }else{
+        $("#login_page").css('display',"none");
+        $("#register_page").css('display',"block");
+      }
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>头部</title>
+</head>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.main{
+		width:100%;
+		height:40px;
+		background:#EBEBEB;
+	}
+	.content{
+		width:1000px;
+		height:100%;
+		min-width: 1000px;
+		margin:0 auto;
+		line-height:40px;
+		font-size:16px;
+		text-align: right;
+	}
+	.content .username{
+		color:#D43737;
+		margin-right:10px;
+	}
+	.content a{
+		color:#292828;
+		text-decoration: none;
+		margin:0 10px;
+	}
+	.content a.a_active{
+		color:#1191CF;
+	}
+</style>
+<body>
+	<div class="main">
+		<div class="content">
+			<span class="username">游客（1.203.65.253）</span>
+			<a href="login.html?state=1" target="_parent">登录</a>
+			<a href="login.html?state=2" target="_parent">注册</a>
+			<a href="javascript:void(0);" target="_parent">手机版</a>
+			<a href="javascript:void(0);" target="_parent">管理平台</a>
+			<a href="javascript:void(0);" target="_parent">English</a>
+		</div>
+	</div>
+	<script src="/lui/dist/jquery.min.js"></script>
+	<script>
+		var url = window.parent.location.href.split("?");
+		if(url){
+			var state = parseInt(url[1].split("=")[1]);
+			if(state == '1'){
+				$(".content a").eq(0).addClass('a_active');
+			}else if(state == '2'){
+				$(".content a").eq(1).addClass('a_active');
+			}
+		}
+		$(".content a").click(function(){
+			$(this).addClass('a_active').siblings("a").removeClass('a_active');
+		})
+	</script>
+</body>
+</html>

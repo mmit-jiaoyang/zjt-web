@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>资源包首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lui/dist/layui/css/layui.css"  media="all">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="/lui/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="/f/css/index.css"  media="all">
+    <style>
+        .search-btn2{
+            height:30px;
+            padding-left: 12px;
+            padding-top: 3px;
+        }
+        .search-box2{
+            background: url(/f/img/search2-p1.png)  no-repeat left top;background-size: 100% 100%;
+        }
+        .search-box2 input{width:183px;height:23px;float: left; border: none;background-color: transparent;}
+        .search-box2 select{float: right;margin-right: 3px;border: none;height:23px;width:76px;border: none;background-color: transparent;}
+        .select-go-bg2{float: left;background: url(/f/img/search2-p2.png)  no-repeat left top   !important;}
+        .select-go2{background: url(/f/img/sgo.png)  no-repeat left top; background-size: 80% 80%;   height: 25px;
+            width: 25px;  border: none;position:relative;left:10px;top:2px;}
+        .layui-breadcrumb span[lay-separator] {
+            margin: 0 5px;
+            color: #999;
+        }
+        .second-search{padding:16px 10px 0px 10px;height: 50px;}
+        .ds li{height: 153px;}
+        .tc li{text-align: center}
+        .scul li{text-align: center;margin-top: 16px;}
+    </style>
+</head>
+<body>
+<div class="header bg-f">
+        <div class="header-main">
+	  <div class="layui-row">
+	         <div class="layui-col-xs8">
+	           <a href="javascript:;" class="logo">
+	            <img src="/f/img/icon.png">
+	          </a>
+	          <ul lay-filter="" class="layui-nav menu-header">
+	            <li class="layui-nav-item "><a href="/f/index">首页</a></li>
+	             <li class="layui-nav-item"><a href="/f/ebook/index">电子书</a></li>
+	            <li class="layui-nav-item"><a href="/f/DDA/index">EBS</a></li>
+	            <li class="layui-nav-item layui-this"><a href="/f/respkg/index">资源包</a></li>
+	          </ul>
+	         </div>
+	          <div class="layui-col-xs4">
+                  <ul class="secondNav">
+
+                      <li ><span >192.168.33.7</span>,&nbsp;<span>会笑的菠萝</span></li>
+                      <li ><a href="/f/login">登录</a></li>
+                      <li class="mm-nav-item-small"><a href="javascript:void(1);">注册</a></li>
+                      <li class="mm-nav-item-small"><a  href="/a">管理后台</a></li>
+                  </ul>
+	          </div>
+	     </div>  
+         <script>
+             $(document).ready(function(){
+            	 $("#gotoPc").click(function(){
+            		 window.open("/f/pc/getDownLoadList?rows=30&page=0","_blank");
+            	 });
+             });
+         </script>
+
+    </div>
+
+</div>
+<div class=" header-buttom-bg"  >
+    <div class="layui-row">
+        <div class="layui-col-xs6 layui-col-xs-offset3 search-btn search-box">
+         <div class="search-wrap">
+            <input type="text" style="" id="svalue"/>
+            <select name="searchkey" lay-verify="" style="" id="searchKey">
+                <option value="all">全部</option>
+                <option value="name">书名</option>
+                <option value="publishCompany">出版社</option>
+                <option value="author">作者</option>
+                <option value="eisbn">ISBN</option>
+                <option value="pisbn">PISBN</option>
+                <option value="pdfContent">全文</option>
+            </select>
+            <div class="select-go-bg">
+             <button class="select-go"  style="" id="searchgo">&nbsp;</button>
+            </div>
+          </div>
+          <div class="search-btn-box">
+              <button   style="">高级检索</button>
+          </div>
+        </div>
+
+    </div>
+</div>
+
+<div class=" layui-main main" >
+    <div class="layui-row">
+        <div class=" main-content" >
+            <div class="layui-card second-search"  style="">
+                <div class="layui-col-xs2">
+                    当前位置：
+                    <span class="layui-breadcrumb" lay-separator=">">
+                      <a href=""><cite>资源包</cite></a>
+                        <a href=""></a>
+                    </span>
+                </div>
+                <div class="layui-col-xs4  search-btn2 search-box2">
+                     <input type="text" style="" id="secendVal"/>
+                    <select name="searchkey" lay-verify="" style="" id="secondSearchKey">
+                        <option value="all">全部</option>
+                        <option value="name">书名</option>
+                        <option value="pubComy">出版社</option>
+                        <option value="author">作者</option>
+                        <option value="eisbn">ISBN</option>
+                        <option value="pisbn">PISBN</option>
+                    </select>
+                </div>
+                <div class="layui-col-xs1 search-btn2 select-go-bg2">
+                    <button class="select-go2"  style="" id="secondSearchgo">&nbsp;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row" style="margin-top: 10px;">
+        <div class="layui-col-xs11 main-content">
+            <div class="layui-row">
+                    <div class="layui-row"></div>
+                    <div class="layui-row" style="margin-top: 10px;">
+                        <div class="layui-card " style="">
+                            <!-- -->
+                            <div class="layui-card-body " style="padding: 0px 0px;">
+
+                                <div class="layui-row">
+                                    <hr class="layui-bg-gray">
+                                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                                        <ul class="layui-tab-title">
+                                            <li class="">学科分类-哲学</li>
+                                        </ul>
+                                        <div class="layui-tab-content" style="padding-left: 30px;">
+                                            <div class="layui-col-xs6">
+
+                                                <div class="m-book-info f-cb">
+                                                    <a class="cover"   target="_blank" title="" data-model="zbtj#xs" data-opration="source">
+                                                        <img  src="/f/img/cover.png" alt="">
+
+                                                    </a>
+                                                    <h4><a href="javascript:void(1);" target="_blank" title="">respkg name</a></h4>
+                                        
+                                                    <p>数量:<span>&nbsp;</span><span>110</span></p>
+                                                    <p>respkg guide</p>
+                                                </div>
+                                                <p><a  target="_blank">查看详情</a></p>
+                                                <hr class="layui-bg-gray">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                <!-- right-->
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<div class="layui-container header-buttom"  >
+    <div style="width: 100%;background-color: #113361;clear: both;height:100px;line-height:100px;color: #FFFFFF;">
+        <p style="text-align: center">©2018-<span id="j-year">2019</span>&nbsp;&nbsp;京公网安备10000000110号</p>
+    </div>
+</div>
+<script src="/lui/dist/layui/layui.js" charset="utf-8"></script>
+
+<script>
+
+
+    layui.use('element', function(){
+        var element = layui.element;
+
+        element.on('nav(demo)', function(elem){
+            layer.msg(elem.text());
+        });
+    });
+
+</script>
+<script type="text/javascript" src="/f/search.js"></script>
+<script>
+ $(document).ready(function(){
+
+ });
+
+</script>
+</body>
+</html>
